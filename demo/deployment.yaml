@@ -52,7 +52,7 @@ spec:
       volumes:
         - name: mypvc
           persistentVolumeClaim:
-            claimName: data
+            claimName: dr-app-data
         - name: files
           configMap:
             name: dr-app-files
