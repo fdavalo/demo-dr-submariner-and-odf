@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: adr-app-service
+  name: dr-app-service
   namespace: demo-dr-with-submariner-and-odf
 spec:
   ports:
