@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: adr-app-service
-  namespace: test
+  namespace: demo-dr-with-submariner-and-odf
 spec:
   ports:
     - protocol: TCP
