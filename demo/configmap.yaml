@@ -18,7 +18,7 @@ data:
         for (var i=0; i<lines.length; i++) content += lines[lines.length-1-i]+"<br/>";
         var data = document.getElementById("data");
         data.innerHTML=content;
-        setTimeout(function() {show();}, 10000);
+        setTimeout(function() {show();}, 5000);
       }
       client.send();
     }
