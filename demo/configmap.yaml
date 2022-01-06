@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: dr-app-files
-  namespace: test
+  namespace: demo-dr-with-submariner-and-odf
 data:
   index.html: |
     <html>
