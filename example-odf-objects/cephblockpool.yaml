@@ -1,0 +1,68 @@
+apiVersion: ceph.rook.io/v1
+kind: CephBlockPool
+metadata:
+  name: replicapool
+  namespace: openshift-storage
+spec:
+  compressionMode: none
+  erasureCoded:
+    codingChunks: 0
+    dataChunks: 0
+  mirroring:
+    enabled: true
+    mode: image
+    snapshotSchedules:
+      - interval: 1h
+  quotas: {}
+  replicated:
+    size: 3
+  statusCheck:
+    mirror: {}
+status:
+  info:
+    rbdMirrorBootstrapPeerSecretName: pool-peer-token-replicapool
+  mirroringInfo:
+    lastChanged: '2022-01-06T11:37:25Z'
+    lastChecked: '2022-01-06T11:38:25Z'
+    mode: image
+    peers:
+      - client_name: client.rbd-mirror-peer
+        direction: rx-tx
+        mirror_uuid: 353e2f8f-245d-4b97-b373-520110a51ca1
+        site_name: 5965a421-ea44-4ce3-bf50-89e5ab95e2a7
+        uuid: c9b5a091-3401-4f92-81d2-bc0b753e6d48
+    site_name: a10e1287-e62b-4f5e-b226-a2a6e0677032
+  mirroringStatus:
+    lastChecked: '2022-01-06T11:38:25Z'
+    summary:
+      daemon_health: OK
+      health: OK
+      image_health: OK
+      states:
+        replaying: 3
+  phase: Ready
+  snapshotScheduleStatus:
+    lastChanged: '2022-01-06T11:37:25Z'
+    lastChecked: '2022-01-06T11:38:25Z'
+    snapshotSchedules:
+      - image: '-'
+        items:
+          - interval: 1h
+        namespace: '-'
+        pool: replicapool
+      - image: csi-vol-743c7b7e-6e08-11ec-9320-0a580a800021
+        items:
+          - interval: 5m
+        pool: replicapool
+      - image: csi-vol-b2152439-6e15-11ec-b658-0a580a84002e
+        items:
+          - interval: 5m
+        pool: replicapool
+      - image: csi-vol-be4383d5-6e2f-11ec-9320-0a580a800021
+        items:
+          - interval: 5m
+        pool: replicapool
+      - image: csi-vol-dummy-a10e1287-e62b-4f5e-b226-a2a6e0677032
+        items:
+          - interval: 1m
+        pool: replicapool
