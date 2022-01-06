@@ -4,16 +4,17 @@
 var client = new XMLHttpRequest();
 
 function show() {
-  client.open('GET', '/index.html');
+  client.open('GET', '/index.txt');
   client.onreadystatechange = function() {
     var lines = client.responseText.split(/\r?\n/);
     var content = "";
-    for (var i=0; i<len(lines); i++) content = lines[len(lines)-1-i];
+    for (var i=0; i<lines.length; i++) content += lines[lines.length-1-i]+"<br/>";
     var data = document.getElementById("data");
     data.innerHTML=content;
-    setTimeout(function() {show();} 1000);
+    setTimeout(function() {show();}, 10000);
   }
   client.send();
+}
 </script>
 </head>
 <body onload="show()">
