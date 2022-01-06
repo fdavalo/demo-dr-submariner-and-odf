@@ -2,7 +2,7 @@ apiVersion: replication.storage.openshift.io/v1alpha1
 kind: VolumeReplication
 metadata:
   name: dr-app
-  namespace: test
+  namespace: demo-dr-with-submariner-and-odf
 spec:
   dataSource:
     apiGroup: ''
