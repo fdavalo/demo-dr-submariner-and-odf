@@ -14,7 +14,7 @@ spec:
         app: dr-app-httpd
     spec:
       initContainers:
-        - name: data
+        - name: files
           command:
             - cp
             - /app/index.html
