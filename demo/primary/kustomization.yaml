@@ -1,7 +1,4 @@
 resources:
-- ../base/namespace.yaml
-- ../base/configmap.yaml
-- ../base/pvc.yaml
-- ../base/deployment.yaml
-- ../base/service.yaml
+- ../base
+- pvc.yaml
 - volumereplication.yaml
