@@ -22,12 +22,12 @@ spec:
           volumeMounts:
             - name: mypvc
               mountPath: /var/www/
-        - name: busybox
+        - name: data
           command:
             - sh
             - '-c'
             - >-
-              while true; do echo $(date) | tee -a /var/www/index.html; sync; sleep 1;
+              while true; do echo $(date) | tee -a /var/www/index.txt; sync; sleep 1;
               done
           volumeMounts:
             - name: mypvc
