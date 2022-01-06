@@ -38,8 +38,12 @@
 ### _Switch Volume replication status_
 
   - On primary cluster, demote volume replication instances (-> secondary mode)
+      - Not necessary if primary is down (primary  site down or network KO)
+      - When primary is up again, scale deployment to zero then move primary VR to secondary mode
   - On secondary cluster, promote volume replication instances (-> primary mode)
 
 ### _Check Application failover_
 
-  - PVC+PV created on primary clustered
+  - Pod started on secondary cluster
+  - Data on PV shows timestamps from before DR (written on primary)
+
