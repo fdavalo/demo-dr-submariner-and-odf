@@ -1,25 +1,32 @@
-<html>
-<head>
-<script>
-var client = new XMLHttpRequest();
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dr-app
+  namespace: test
+data:
+  index.html: |
+    <html>
+    <head>
+    <script>
+    var client = new XMLHttpRequest();
 
-function show() {
-  client.open('GET', '/index.txt');
-  client.onreadystatechange = function() {
-    var lines = client.responseText.split(/\r?\n/);
-    var content = "";
-    for (var i=0; i<lines.length; i++) content += lines[lines.length-1-i]+"<br/>";
-    var data = document.getElementById("data");
-    data.innerHTML=content;
-    setTimeout(function() {show();}, 10000);
-  }
-  client.send();
-}
-</script>
-</head>
-<body onload="show()">
-<div id="data"/>
-<script>
+    function show() {
+      client.open('GET', '/index.txt');
+      client.onreadystatechange = function() {
+        var lines = client.responseText.split(/\r?\n/);
+        var content = "";
+        for (var i=0; i<lines.length; i++) content += lines[lines.length-1-i]+"<br/>";
+        var data = document.getElementById("data");
+        data.innerHTML=content;
+        setTimeout(function() {show();}, 10000);
+      }
+      client.send();
+    }
+    </script>
+    </head>
+    <body onload="show()">
+    <div id="data"/>
+    <script>
 
-</body>
-</html>
+    </body>
+    </html>
