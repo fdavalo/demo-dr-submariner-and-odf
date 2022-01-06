@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dr-app
+  namespace: demo-dr-with-submariner-and-odf
+spec:
+  selector:
+    matchLabels:
+      app: httpd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+        - name: httpd
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: mypvc
+              mountPath: /var/www/
+        - name: busybox
+          command:
+            - sh
+            - '-c'
+            - >-
+              while true; do echo $(date) | tee -a /var/www/index.html; sync; sleep 1;
+              done
+          volumeMounts:
+            - name: mypvc
+              mountPath: /var/www/
+          image: 'registry.redhat.io/ubi8/ubi-minimal'
+      volumes:
+        - name: mypvc
+          persistentVolumeClaim:
+            claimName: data
