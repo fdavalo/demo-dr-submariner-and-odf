@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data
+  name: dr-app-data
   namespace: demo-dr-with-submariner-and-odf
 spec:
   accessModes:
