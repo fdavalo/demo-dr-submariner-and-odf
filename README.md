@@ -23,7 +23,9 @@
   Use demo/primary and demo/secondary Kustomize example from    https://guithub.com/fdavalo/demo-dr-submariner-and-odf/example-odf-objects
 
 *1: you can use RDRhelper after ODF instance is up, cf https://github.com/red-hat-data-services/RDRhelper
+
 *1: see example of ODF configured objects https://guithub.com/fdavalo/demo-dr-submariner-and-odf/example-odf-objects/
+
 *1: as an alternative, use operators (need ACM) to configure mirroring (multi-cluster orchestrator, …), cf demo DR with ACM and ODF
 
 ### _Check pre-requisites_
