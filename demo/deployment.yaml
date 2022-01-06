@@ -13,6 +13,22 @@ spec:
       labels:
         app: httpd
     spec:
+      initContainers:
+        - name: data
+          command:
+            - cp
+            - /app/index.html
+            - /var/www/html/index.html
+          volumeMounts:
+            - name: mypvc
+              mountPath: /var/www/html
+          image: 'registry.redhat.io/ubi8/ubi-minimal'
+          volumeMounts:
+            - name: files
+              mountPath: /app/index.html
+              subPath: index.html
+            - name: mypvc
+              mountPath: /var/www/html      
       containers:
         - name: httpd
           image: >-
@@ -21,19 +37,22 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: mypvc
-              mountPath: /var/www/
+              mountPath: /var/www/html
         - name: data
           command:
             - sh
             - '-c'
             - >-
-              while true; do echo $(date) | tee -a /var/www/index.txt; sync; sleep 1;
+              while true; do echo $(date) | tee -a /var/www/html/index.txt; sync; sleep 1;
               done
           volumeMounts:
             - name: mypvc
-              mountPath: /var/www/
+              mountPath: /var/www/html
           image: 'registry.redhat.io/ubi8/ubi-minimal'
       volumes:
         - name: mypvc
           persistentVolumeClaim:
             claimName: data
+        - name: files
+          configMap:
+            name: dr-app-files
