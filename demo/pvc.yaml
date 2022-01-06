@@ -2,7 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data
-  namespace: test
+  namespace: demo-dr-with-submariner-and-odf
 spec:
   accessModes:
     - ReadWriteOnce
