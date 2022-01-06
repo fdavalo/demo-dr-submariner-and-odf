@@ -1,0 +1,37 @@
+apiVersion: replication.storage.openshift.io/v1alpha1
+kind: VolumeReplication
+metadata:
+  name: test
+  namespace: test
+spec:
+  dataSource:
+    apiGroup: ''
+    kind: PersistentVolumeClaim
+    name: test
+  replicationState: secondary
+  volumeReplicationClass: odf-rbd-volumereplicationclass
+status:
+  conditions:
+    - lastTransitionTime: '2022-01-05T14:11:05Z'
+      message: ''
+      observedGeneration: 2
+      reason: Demoted
+      status: 'True'
+      type: Completed
+    - lastTransitionTime: '2022-01-05T16:39:58Z'
+      message: ''
+      observedGeneration: 2
+      reason: VolumeDegraded
+      status: 'True'
+      type: Degraded
+    - lastTransitionTime: '2022-01-06T11:43:50Z'
+      message: ''
+      observedGeneration: 2
+      reason: ResyncTriggered
+      status: 'True'
+      type: Resyncing
+  lastCompletionTime: '2022-01-05T14:11:05Z'
+  lastStartTime: '2022-01-05T14:02:41Z'
+  message: volume is degraded
+  observedGeneration: 2
+  state: Secondary
