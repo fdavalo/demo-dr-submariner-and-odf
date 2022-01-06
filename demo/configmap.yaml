@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dr-app
+  name: dr-app-files
   namespace: test
 data:
   index.html: |
