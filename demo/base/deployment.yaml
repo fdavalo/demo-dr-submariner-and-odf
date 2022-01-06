@@ -40,7 +40,7 @@ spec:
             - sh
             - '-c'
             - >-
-              while true; do "echo $POD_NAME $(date)" | tee -a /var/www/html/index.txt; sync; sleep 1;
+              while true; do echo "$POD_NAME $(date)" | tee -a /var/www/html/index.txt; sync; sleep 1;
               done
           env:
             - name: POD_NAME
