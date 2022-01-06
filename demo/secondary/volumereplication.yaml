@@ -1,0 +1,12 @@
+apiVersion: replication.storage.openshift.io/v1alpha1
+kind: VolumeReplication
+metadata:
+  name: dr-app
+  namespace: test
+spec:
+  dataSource:
+    apiGroup: ''
+    kind: PersistentVolumeClaim
+    name: dr-app-data
+  replicationState: secondary
+  volumeReplicationClass: odf-rbd-volumereplicationclass
