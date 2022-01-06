@@ -1,0 +1,14 @@
+apiVersion: ceph.rook.io/v1
+kind: CephRBDMirror
+metadata:
+  name: rbd-mirror
+  namespace: openshift-storage
+spec:
+  count: 1
+  peers:
+    secretNames:
+      - mirror-bootstrap-replicapool
+  placement: {}
+  resources: {}
+status:
+  phase: Ready
