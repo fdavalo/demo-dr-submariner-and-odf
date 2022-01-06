@@ -19,9 +19,6 @@ spec:
             - cp
             - /app/index.html
             - /var/www/html/index.html
-          volumeMounts:
-            - name: mypvc
-              mountPath: /var/www/html
           image: 'registry.redhat.io/ubi8/ubi-minimal'
           volumeMounts:
             - name: files
