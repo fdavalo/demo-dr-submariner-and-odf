@@ -40,8 +40,13 @@ spec:
             - sh
             - '-c'
             - >-
-              while true; do echo $(date) | tee -a /var/www/html/index.txt; sync; sleep 1;
+              while true; do "echo $POD_NAME $(date)" | tee -a /var/www/html/index.txt; sync; sleep 1;
               done
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name             
           volumeMounts:
             - name: mypvc
               mountPath: /var/www/html
